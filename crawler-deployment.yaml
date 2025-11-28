@@ -17,14 +17,6 @@ spec:
       containers: 
         - name: synergychat-crawler
           image: bootdotdev/synergychat-crawler:latest
-          env:
-            - name: CRAWLER_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: synergychat-crawler-configmap
-                  key: CRAWLER_PORT
-            - name: CRAWLER_KEYWORDS
-              valueFrom:
-                configMapKeyRef:
-                  name: synergychat-crawler-configmap
-                  key: CRAWLER_KEYWORDS
+          envFrom:
+            - configMapRef:
+                name: synergychat-crawler-configmap
